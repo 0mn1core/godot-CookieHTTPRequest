@@ -44,7 +44,7 @@ static func _check_for_cookie_fix_attack(check_cookie: Dictionary) -> bool:
 # Gets a matching cookie from the store, otherwise returns null
 # No return type since GDscript doesn't have nullable types yet: https://github.com/godotengine/godot-proposals/issues/162
 static func _get_matching_cookie_index(cookie: Dictionary):
-	for i in range(0, _storedCookies.size()-1, 1):
+	for i in range(_storedCookies.size()):
 		var stored_cookie = _storedCookies[i]
 		if(cookie.name == stored_cookie.name and cookie.domain == stored_cookie.domain and cookie.http_only_flag == stored_cookie.http_only_flag and cookie.path == stored_cookie.path):
 			return i
@@ -81,7 +81,7 @@ static func _retrieve_cookies_for_header(request_url: String) -> Array:
 # Creates the `Cookie` http header using the passed in cookie array
 static func _create_cookie_header_string(cookies: Array) -> String:
 	var header_string := "Cookie: "
-	for i in range(0, cookies.size(), 1):
+	for i in range(cookies.size()):
 		var cookie = cookies[i]
 		print("Cookie Loop Index: " + str(i))
 		print(cookie)

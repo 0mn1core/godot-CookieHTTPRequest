@@ -94,7 +94,7 @@ func _process_set_cookie_headers(result, _response_code, headers: PackedStringAr
 	var set_cookie_header_strings := _get_set_cookie_headers(headers)
 	# Map
 	var cookie_dicts = []
-	for i in range(0, set_cookie_header_strings.size(), 1):
+	for i in range(set_cookie_header_strings.size()):
 		var processed_cookie_header = _verify_and_parse_set_cookie_header(set_cookie_header_strings[i], process_time)
 		if (processed_cookie_header == null):
 			continue
