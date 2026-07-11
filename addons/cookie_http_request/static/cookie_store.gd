@@ -61,7 +61,7 @@ static func _retrieve_cookies_for_header(request_url: String) -> Array:
 	var request_path = HTTPUtils.get_url_path(request_url)
 	for i in range(_storedCookies.size() - 1, -1, -1):
 		var cookie = _storedCookies[i]
-		if (cookie.get("persistant_flag") and cookie.get("expiry_time", HTTPUtils.MAX_SECONDS) < process_time):
+		if (cookie.get("persistent_flag") and cookie.get("expiry_time", HTTPUtils.MAX_SECONDS) < process_time):
 			_storedCookies.remove_at(i)
 			continue
 		# Retrieval check
